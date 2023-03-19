@@ -1,4 +1,4 @@
-name: Windows Build and Test
+name: Windows Build and Test001
 on:
   push:
     branches:
@@ -60,3 +60,9 @@ jobs:
           }
           
           craft --src-dir ${{ github.workspace }} nextcloud-client
+          
+      - name: Upload archive
+        uses: actions/upload-artifact@v3
+        with:
+         name: output-${{ inputs.platform }}.zip
+         retention-days: 3
